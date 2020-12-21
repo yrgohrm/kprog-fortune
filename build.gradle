@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'application'    
+    id 'jacoco'
+    id 'com.github.spotbugs' version '4.6.0'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+allprojects {
+    version = '1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.javalin:javalin:3.7.0'    
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
+    implementation 'org.slf4j:slf4j-simple:1.7.28'
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'commons-cli:commons-cli:1.4'
+    testImplementation 'org.mockito:mockito-core:3.2.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.7.1'
+    spotbugs 'com.github.spotbugs:spotbugs:4.0.0'
+}
+
+mainClassName = 'se.yrgo.kprog.fortune.Main'
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                minimum = 0.8
+            }
+            excludes = [
+               'se.yrgo.kprog.fortune.Main',
+               'se.yrgo.kprog.fortune.core.logging.RequestLogger'
+            ]
+        }
+    }
+}
+
+spotbugs {
+  effort = "max"
+  reportLevel = "high"
+}
+
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestCoverageVerification
+}
