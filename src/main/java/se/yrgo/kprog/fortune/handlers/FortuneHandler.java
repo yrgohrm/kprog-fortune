@@ -30,23 +30,23 @@ public class FortuneHandler {
         this.fortuneService = fortuneService;
     }
     
-    public void get(Context ctxt) throws Exception {
+    public void get(Context ctxt) {
         ctxt.json(fortuneService.getRandom());
     }
     
-    public void getShort(Context ctxt) throws Exception {
+    public void getShort(Context ctxt) {
         ctxt.json(fortuneService.getRandomShort());
     }
     
-    public void getShowerThought(Context ctxt) throws Exception {
+    public void getShowerThought(Context ctxt) {
         ctxt.json(fortuneService.getShowerThought());
     }
     
-    public void getTraditional(Context ctxt) throws Exception {
+    public void getTraditional(Context ctxt) {
         ctxt.json(fortuneService.getTraditional());
     }
     
-    public void query(Context ctxt) throws Exception {
+    public void query(Context ctxt) {
         String query = ctxt.queryParam("q");
         if (StringUtil.isBlank(query) || query.length() < 3) {
             throw new BadRequestResponse("Query must be at least 3 characters.");

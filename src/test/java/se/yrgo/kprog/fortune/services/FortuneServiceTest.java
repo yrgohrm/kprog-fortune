@@ -23,7 +23,7 @@ import se.yrgo.kprog.fortune.api.Fortune;
 /**
  * Test of FortuneService.
  */
-public class FortuneServiceTest {
+class FortuneServiceTest {
     final Fortune TRAD_FORTUNE = new Fortune("traditional fortune " + "X".repeat(256));
     final Fortune SHOWER_THOUGHT = new Fortune("shower thought");
 
@@ -31,7 +31,7 @@ public class FortuneServiceTest {
      * Test of getRandom method, of class FortuneService.
      */
     @Test
-    public void testGetRandom() {
+    void testGetRandom() {
         FortuneService instance = new FortuneService();
         Fortune result = instance.getRandom();
         if (!(result.equals(TRAD_FORTUNE) || result.equals(SHOWER_THOUGHT))) {
@@ -43,7 +43,7 @@ public class FortuneServiceTest {
      * Test of getRandomShort method, of class FortuneService.
      */
     @Test
-    public void testGetRandomShort() {
+    void testGetRandomShort() {
         FortuneService instance = new FortuneService();
         Fortune expResult = SHOWER_THOUGHT;
         Fortune result = instance.getRandomShort();
@@ -55,7 +55,7 @@ public class FortuneServiceTest {
      * Test of getShowerThought method, of class FortuneService.
      */
     @Test
-    public void testGetShowerThought() {
+    void testGetShowerThought() {
         FortuneService instance = new FortuneService();
         Fortune expResult = SHOWER_THOUGHT;
         Fortune result = instance.getShowerThought();
@@ -66,7 +66,7 @@ public class FortuneServiceTest {
      * Test of getTraditional method, of class FortuneService.
      */
     @Test
-    public void testGetTraditional() {
+    void testGetTraditional() {
         FortuneService instance = new FortuneService();
         Fortune expResult = TRAD_FORTUNE;
         Fortune result = instance.getTraditional();
@@ -77,7 +77,7 @@ public class FortuneServiceTest {
      * Test of query method, of class FortuneService.
      */
     @Test
-    public void testQuery() {
+    void testQuery() {
         FortuneService instance = new FortuneService();
         var expResult = Collections.singletonList(TRAD_FORTUNE);
         var result = instance.query("traditional");

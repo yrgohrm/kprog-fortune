@@ -22,13 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test of the Fortune class.
  * 
  */
-public class FortuneTest {
+class FortuneTest {
 
     /**
      * Test of getFortune method, of class Fortune.
      */
     @Test
-    public void testGetFortune() {
+    void testGetFortune() {
         String expResult = "some fortune\nis here";
         Fortune instance = new Fortune(expResult);
         String result = instance.getFortune();
@@ -39,7 +39,7 @@ public class FortuneTest {
      * Test of setFortune method, of class Fortune.
      */
     @Test
-    public void testSetFortune() {
+    void testSetFortune() {
         String fortune = "some kind of fortune";
         Fortune instance = new Fortune("");
         instance.setFortune(fortune);
@@ -50,7 +50,7 @@ public class FortuneTest {
      * Test of isShort method, of class Fortune.
      */
     @Test
-    public void testIsShort() {
+    void testIsShort() {
         var shortInstance1 = new Fortune(null);
         var shortInstance2 = new Fortune("a".repeat(160));
         var longInstance   = new Fortune("a".repeat(161));
@@ -64,23 +64,23 @@ public class FortuneTest {
      * Test of equals method, of class Fortune.
      */
     @Test
-    public void testEquals() {
+    void testEquals() {
         Fortune instance1 = null;
         Fortune instance2 = new Fortune(null);
         Fortune instance3 = new Fortune("apan");
         Fortune instance4 = new Fortune("apan");
         
-        assertFalse(instance2.equals(instance1));
-        assertFalse(instance2.equals(instance3));
-        assertTrue(instance3.equals(instance3));
-        assertTrue(instance3.equals(instance4));
+        assertNotEquals(instance2, instance1);
+        assertNotEquals(instance2, instance3);
+        assertEquals(instance3, instance3);
+        assertEquals(instance3, instance4);
     }
     
     /**
      * Test of hashCode method, of class Fortune.
      */
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         Fortune instance1 = new Fortune("this");
         Fortune instance2 = new Fortune("that");
         assertNotEquals(instance1.hashCode(), instance2.hashCode());

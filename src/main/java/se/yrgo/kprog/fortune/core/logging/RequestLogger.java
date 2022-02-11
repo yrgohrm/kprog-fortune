@@ -28,6 +28,8 @@ public class RequestLogger {
     private RequestLogger() {}
 
     public static void logRequest(Context ctxt, float executionTimeMs) {
-        logger.info("{}, {}", ctxt.url(), executionTimeMs);
+        if (logger.isInfoEnabled()) {
+            logger.info("{}, {}", ctxt.url(), executionTimeMs);
+        }
     }
 }

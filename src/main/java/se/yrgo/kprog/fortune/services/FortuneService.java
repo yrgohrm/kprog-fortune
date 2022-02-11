@@ -33,8 +33,8 @@ import se.yrgo.kprog.fortune.api.Fortune;
  *
  */
 public class FortuneService {
-    private final List<Fortune> SHOWERTHOUGHTS = Collections.unmodifiableList(readFortuneResource("/showerthoughts.txt"));
-    private final List<Fortune> FORTUNES = Collections.unmodifiableList(readFortuneResource("/fortunes.txt"));
+    private final List<Fortune> showerthoughts = Collections.unmodifiableList(readFortuneResource("/showerthoughts.txt"));
+    private final List<Fortune> fortunes = Collections.unmodifiableList(readFortuneResource("/fortunes.txt"));
     
     // we use regular random in this instance since it is easy, but it could
     // have a performance impact if this service was used heavily from 
@@ -48,10 +48,10 @@ public class FortuneService {
      */
     public Fortune getRandom() {
         if (random.nextInt(2) == 0) {
-            return getRand(SHOWERTHOUGHTS);
+            return getRand(showerthoughts);
         }
         else {
-            return getRand(FORTUNES);
+            return getRand(fortunes);
         }
     }
     
@@ -77,7 +77,7 @@ public class FortuneService {
      * @return a random shower thought.
      */
     public Fortune getShowerThought() {
-        return getRand(SHOWERTHOUGHTS);
+        return getRand(showerthoughts);
     }
     
     /**
@@ -86,7 +86,7 @@ public class FortuneService {
      * @return a random traditional fortune.
      */
     public Fortune getTraditional() {
-        return getRand(FORTUNES);
+        return getRand(fortunes);
     }
     
     /**
@@ -96,7 +96,7 @@ public class FortuneService {
      * @return list of matching fortunes
      */
     public List<Fortune> query(String query) {
-        var matching = Stream.concat(FORTUNES.stream(), SHOWERTHOUGHTS.stream())
+        var matching = Stream.concat(fortunes.stream(), showerthoughts.stream())
                 .filter((f) -> f.getFortune().contains(query))
                 .collect(Collectors.toList());
         return matching;

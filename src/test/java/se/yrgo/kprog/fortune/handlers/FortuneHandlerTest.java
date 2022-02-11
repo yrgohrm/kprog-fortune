@@ -31,14 +31,14 @@ import se.yrgo.kprog.fortune.services.FortuneService;
  * Test of FortuneHandler class.
  * 
  */
-public class FortuneHandlerTest {
+class FortuneHandlerTest {
  
     /**
      * Test of get method, of class FortuneHandler.
      * @throws java.lang.Exception
      */
     @Test
-    public void testGet() throws Exception {
+    void testGet() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
@@ -57,7 +57,7 @@ public class FortuneHandlerTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetShort() throws Exception {
+    void testGetShort() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
@@ -76,7 +76,7 @@ public class FortuneHandlerTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetShowerThought() throws Exception {
+    void testGetShowerThought() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
@@ -95,7 +95,7 @@ public class FortuneHandlerTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetTraditional() throws Exception {
+    void testGetTraditional() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
@@ -114,7 +114,7 @@ public class FortuneHandlerTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testQueryGood() throws Exception {
+    void testQueryGood() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
@@ -136,7 +136,7 @@ public class FortuneHandlerTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testQueryBad() throws Exception {
+    void testQueryBad() throws Exception {
         Context ctxt = mock(Context.class);
         FortuneService service = mock(FortuneService.class);
         FortuneHandler instance = new FortuneHandler(service);
